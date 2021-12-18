@@ -12,12 +12,12 @@ public static class MeshGenerator
         float topLeftX = (width - 1) / -2f;
         float topLeftZ = (height - 1) / 2f;
 
-        MeshData meshData = new MeshData(width, height);
-
         int vertexIndex = 0;
 
         int simpleMeshIncrement = (levelOfDetail == 0)?1:levelOfDetail * 2;
         int verticesPerLine = (width - 1) / simpleMeshIncrement + 1;
+
+        MeshData meshData = new MeshData(verticesPerLine, verticesPerLine);
 
         for (int y = 0; y < height; y += simpleMeshIncrement)
         {
