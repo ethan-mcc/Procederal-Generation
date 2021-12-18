@@ -12,7 +12,7 @@ public class MapGenerator : MonoBehaviour
 
 	public Noise.NormalizeMode normalizeMode;
 
-	public const int mapChunkSize = 241;
+	public const int mapChunkSize = 239;
 	[Range(0, 6)]
 	public int editorPreviewLOD;
 	public float noiseScale;
@@ -59,7 +59,7 @@ public class MapGenerator : MonoBehaviour
 		}
 		else if (drawMode == DrawMode.Mesh)
 		{
-			display.DrawMesh(MeshGenerator.GenerateTerrianMesh(mapData.heightMap,
+			display.DrawMesh(MeshGenerator.GenerateTerrainMesh(mapData.heightMap,
 				meshHeightMultiplier, meshHeightCurve, editorPreviewLOD),
 				TextureGenerator.TextureFromColorMap(mapData.colorMap, mapChunkSize, mapChunkSize));
 		}
@@ -98,7 +98,7 @@ public class MapGenerator : MonoBehaviour
 
 	void MeshDataThread(MapData mapData, int lod, Action<MeshData> callback)
 	{
-		MeshData meshData = MeshGenerator.GenerateTerrianMesh(mapData.heightMap,
+		MeshData meshData = MeshGenerator.GenerateTerrainMesh(mapData.heightMap,
 			meshHeightMultiplier, meshHeightCurve, lod);
 		lock (meshDataThreadInfoQueue)
 		{
@@ -129,7 +129,7 @@ public class MapGenerator : MonoBehaviour
 
 	MapData GenerateMapData(Vector2 center)
 	{
-		float[,] noiseMap = Noise.GenerateNoiseMap(mapChunkSize, mapChunkSize,
+		float[,] noiseMap = Noise.GenerateNoiseMap(mapChunkSize + 2, mapChunkSize + 2,
 			seed, noiseScale, octaves, persistance, lacunarity, center + offset,
 			normalizeMode);
 
