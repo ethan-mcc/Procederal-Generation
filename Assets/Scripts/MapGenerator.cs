@@ -11,9 +11,6 @@ public class MapGenerator : MonoBehaviour
 	public DrawMode drawMode;
 
 	public Noise.NormalizeMode normalizeMode;
-
-	public const int mapChunkSize = 95;
-
 	public bool useFlatShading;
 
 	[Range(0, 6)]
@@ -36,6 +33,7 @@ public class MapGenerator : MonoBehaviour
 	public bool autoUpdate;
 
 	public TerrainType[] regions;
+	static MapGenerator instance;
 
 	float[,] falloffMap;
 
@@ -45,6 +43,25 @@ public class MapGenerator : MonoBehaviour
     private void Awake()
     {
 		falloffMap = FalloffGenerator.GenerateFalloffMap(mapChunkSize);
+    }
+
+	public static int mapChunkSize
+    {
+		get
+        {
+			if (instance == null)
+            {
+				instance = FindObjectOfType<MapGenerator>();
+            }
+			if (instance.useFlatShading)
+            {
+				return 95;
+            }
+			else
+            {
+				return 239;
+            }
+        }
     }
 
     public void DrawMapInEditor()
