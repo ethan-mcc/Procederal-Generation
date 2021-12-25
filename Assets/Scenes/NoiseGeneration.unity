@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.18028352, g: 0.22571376, b: 0.30692244, a: 1}
+  m_IndirectSpecularColor: {r: 0.18028305, g: 0.22571313, b: 0.3069213, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -123,6 +123,63 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
+--- !u!1001 &169853252
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 100006, guid: c6453f8e1f814744d8b94e5a6d1f9942, type: 3}
+      propertyPath: m_Name
+      value: RigidBodyFPSController
+      objectReference: {fileID: 0}
+    - target: {fileID: 400002, guid: c6453f8e1f814744d8b94e5a6d1f9942, type: 3}
+      propertyPath: m_RootOrder
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 400002, guid: c6453f8e1f814744d8b94e5a6d1f9942, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 400002, guid: c6453f8e1f814744d8b94e5a6d1f9942, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 5.58
+      objectReference: {fileID: 0}
+    - target: {fileID: 400002, guid: c6453f8e1f814744d8b94e5a6d1f9942, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 400002, guid: c6453f8e1f814744d8b94e5a6d1f9942, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 400002, guid: c6453f8e1f814744d8b94e5a6d1f9942, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 400002, guid: c6453f8e1f814744d8b94e5a6d1f9942, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 400002, guid: c6453f8e1f814744d8b94e5a6d1f9942, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 400002, guid: c6453f8e1f814744d8b94e5a6d1f9942, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 400002, guid: c6453f8e1f814744d8b94e5a6d1f9942, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 400002, guid: c6453f8e1f814744d8b94e5a6d1f9942, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: c6453f8e1f814744d8b94e5a6d1f9942, type: 3}
 --- !u!1 &267381184
 GameObject:
   m_ObjectHideFlags: 0
@@ -158,20 +215,56 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 67e1176c12a004d9f91f785bc5374d26, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  noiseMapGeneration: {fileID: 0}
-  tileRenderer: {fileID: 0}
-  meshFilter: {fileID: 0}
-  meshCollider: {fileID: 0}
-  levelScale: 0
-  terrainTypes: []
-  heightMultiplier: 0
+  noiseMapGeneration: {fileID: 267381186}
+  tileRenderer: {fileID: 267381188}
+  meshFilter: {fileID: 267381189}
+  meshCollider: {fileID: 267381187}
+  levelScale: 3
+  terrainTypes:
+  - name: water
+    height: 0.4
+    color: {r: 0, g: 0.48477888, b: 1, a: 0}
+  - name: grass
+    height: 0.7
+    color: {r: 0.067555256, g: 0.4056604, b: 0, a: 0}
+  - name: mountain
+    height: 1
+    color: {r: 0.4056604, g: 0.18200758, b: 0, a: 1}
+  heightMultiplier: 20
   heightCurve:
     serializedVersion: 2
-    m_Curve: []
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    - serializedVersion: 3
+      time: 1
+      value: 1
+      inSlope: 2
+      outSlope: 2
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
-  waves: []
+  waves:
+  - seed: 5613
+    frequency: 1
+    amplitude: 4
+  - seed: 9551
+    frequency: 0.5
+    amplitude: 3
+  - seed: 6712
+    frequency: 0.25
+    amplitude: 13.66
 --- !u!114 &267381186
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -490,8 +583,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a7f0acaa77acf1e45bd7957bc215e4ae, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  mapWidthInTiles: 10
-  mapDepthInTiles: 10
+  mapWidthInTiles: 25
+  mapDepthInTiles: 25
   tilePrefab: {fileID: 267381184}
 --- !u!4 &1953579218
 Transform:
