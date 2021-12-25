@@ -181,7 +181,7 @@ public class MapGenerator : MonoBehaviour
 				{
 					if (currentHeight >= regions[i].height)
 					{
-						colorMap[y * mapChunkSize + x] = regions[i].colour;
+						colorMap[y * mapChunkSize + x] = regions[i].color;
 					}
 					else
 					{
@@ -221,8 +221,8 @@ public class MapGenerator : MonoBehaviour
 
 	}
 
-}
-
+} 
+/*
 [System.Serializable]
 public struct TerrainType
 {
@@ -230,6 +230,7 @@ public struct TerrainType
 	public float height;
 	public Color colour;
 }
+*/
 
 public struct MapData
 {
